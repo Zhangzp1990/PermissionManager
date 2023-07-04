@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  PermissionManagerDemo
 //
-//  Created by zhangzp on 2023/7/3.
+//  Created by zhangzp on 2023/7/1.
 //
 
 import UIKit

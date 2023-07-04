@@ -2,12 +2,12 @@
 //  PermissionManagerDemoUITestsLaunchTests.swift
 //  PermissionManagerDemoUITests
 //
-//  Created by zhangzp on 2023/7/3.
+//  Created by zhangzp on 2023/7/1.
 //
 
 import XCTest
 
-final class PermissionManagerDemoUITestsLaunchTests: XCTestCase {
+class PermissionManagerDemoUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

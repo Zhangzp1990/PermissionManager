@@ -1,5 +1,6 @@
 //
 //  PermissionsType.swift
+//  PermissionManagerDemo
 //
 //  Created by zhangzp on 2022/6/1.
 //
@@ -17,4 +18,12 @@ public enum PermissionsType {
     case notification
     /// 通讯录
     case contactStore
+    /// 定位
+    case location(type: LocationType)
+    
+    public enum LocationType {
+        case always
+        case whenInUse
+        case background
+    }
 }
