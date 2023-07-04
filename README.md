@@ -5,24 +5,22 @@
 
 ```
 Task {
+    /// 获取相机权限
     let camera = await Permissions.requestAccess(.camera)
+    /// 相机权限是否授权
     let cameraAuth = await Permissions.isAuthorized(.camera)
-    print("camera status = \(camera) isAuthorized = \(cameraAuth)")
+    /// 相机权限是否未决定
+    let cameraNotDetermined = await Permissions.isNotDetermined(.camera)
+    /// 相机权限是否拒绝
+    let cameraDenied = await Permissions.isDenied(.camera)
     
-    let photoLibrary = await Permissions.requestAccess(.photoLibrary)
-    let photoAuth = await Permissions.isAuthorized(.photoLibrary)
-    print("photoLibrary status = \(photoLibrary) isAuthorized = \(photoAuth)")
-    
-    let microphone = await Permissions.requestAccess(.microphone)
-    let microphoneAuth = await Permissions.isAuthorized(.microphone)
-    print("microphone status = \(microphone) isAuthorized = \(microphoneAuth)")
-    
-    let contactStore = await Permissions.requestAccess(.contactStore)
-    let contactAuth = await Permissions.isAuthorized(.contactStore)
-    print("contactStore status = \(contactStore) isAuthorized = \(contactAuth)")
-    
+    /// 获取通知权限
     let notification = await Permissions.requestAccess(.notification)
+    /// 通知权限是否授权
     let notificationAuth = await Permissions.isAuthorized(.notification)
-    print("notification status = \(notification) isAuthorized = \(notificationAuth)")
+    /// 通知权限是否未决定
+    let notifiNotDetermined = await Permissions.isNotDetermined(.notification)
+    /// 通知权限是否拒绝
+    let notifiDenied = await Permissions.isDenied(.notification)
 }
 ```
