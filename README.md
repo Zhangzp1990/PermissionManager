@@ -4,23 +4,41 @@
 # 使用方法
 
 ```
-Task {
-    /// 获取相机权限
-    let camera = await Permissions.requestAccess(.camera)
-    /// 相机权限是否授权
-    let cameraAuth = await Permissions.isAuthorized(.camera)
-    /// 相机权限是否未决定
-    let cameraNotDetermined = await Permissions.isNotDetermined(.camera)
-    /// 相机权限是否拒绝
-    let cameraDenied = await Permissions.isDenied(.camera)
+/// 相册权限
+let isAuthorized = Permissions.isAuthorized(.photoLibrary)
+let isNotDetermined = Permissions.isNotDetermined(.photoLibrary)
+Permissions.requestAccess(.photoLibrary) { status in
+    print("photoLibrary status = \(status)")
+}
+
+/// 通知权限
+if #available(iOS 13.0, *) {
+    Task {
+        let notification = await Permissions.requestAccess(.notification)
+        print("notification status = \(notification)")
+    }
+} else {
+    // Fallback on earlier versions
+}
+
+/// 定位权限
+Permissions.requestAccess(.location(type: .whenInUse)) { result in
+    print("location status = \(result)")
+    guard result else { return }
     
-    /// 获取通知权限
-    let notification = await Permissions.requestAccess(.notification)
-    /// 通知权限是否授权
-    let notificationAuth = await Permissions.isAuthorized(.notification)
-    /// 通知权限是否未决定
-    let notifiNotDetermined = await Permissions.isNotDetermined(.notification)
-    /// 通知权限是否拒绝
-    let notifiDenied = await Permissions.isDenied(.notification)
+    Permissions.getLocations { location in
+        guard let location = location else { return }
+        print("longitude = \(location.coordinate.longitude) latitude = \(location.coordinate.latitude)")
+    }
+    
+    Permissions.getGeoLocations { placemark in
+        guard let placemark = placemark else { return }
+        print("placemark = \(placemark)")
+    }
+}
+
+/// 权限批量请求，顺序弹窗
+Permissions.syncRequestAccess(types: [.camera, .microphone, .contactStore]) { type, status in
+    print("type = \(type) status = \(status)")
 }
 ```
