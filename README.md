@@ -42,3 +42,4 @@ Permissions.syncRequestAccess(types: [.camera, .microphone, .contactStore]) { ty
     print("type = \(type) status = \(status)")
 }
 ```
+
